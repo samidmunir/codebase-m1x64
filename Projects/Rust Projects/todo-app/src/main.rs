@@ -24,6 +24,15 @@ enum Commands {
     Remove {id: usize},
 }
 
+fn add_task(tasks: &mut Vec<Task>, description: String) {
+    let id = tasks.len() + 1;
+    tasks.push(Task {
+        id,
+        description,
+        done: false,
+    });
+}
+
 fn main() {
     println!("\nRusty Todo App\n");
 }
