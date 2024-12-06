@@ -33,6 +33,12 @@ fn add_task(tasks: &mut Vec<Task>, description: String) {
     });
 }
 
+fn save_tasks(tasks: &Vec<Task>, filename: &str) -> Result<(), std::io::Error> {
+    let data = serde_json::to_string_pretty(tasks)?;
+    std::fs::write(filename, data)?;
+    Ok(())
+}
+
 fn main() {
     println!("\nRusty Todo App\n");
 }
