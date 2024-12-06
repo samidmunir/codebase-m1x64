@@ -39,6 +39,14 @@ fn save_tasks(tasks: &Vec<Task>, filename: &str) -> Result<(), std::io::Error> {
     Ok(())
 }
 
+fn load_tasks(filename: &str) -> Vec<Task> {
+    if let Ok(data) = std::fs::read_to_string(filename) {
+        serde_json::from_str(&data).unwrap_or_else(|_| Vec::new())
+    } else {
+        Vec::new()
+    }
+}
+
 fn main() {
     println!("\nRusty Todo App\n");
 }
