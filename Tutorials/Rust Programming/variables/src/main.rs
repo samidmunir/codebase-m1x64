@@ -63,11 +63,11 @@ fn main() {
     */
     let mut x: u8 = 1;
     x = 7;
-    let x = x;
+    let _x = x;
     // x = x + 3; // cannot do this because by default x is immutable.
 
-    let y: u8 = 7;
-    let y: &str = "Hello world!";
+    let _y: u8 = 7;
+    let _y: &str = "Hello world!";
 
     /*
         Prepend variable name with _ to remove warnings for unused variables.
@@ -75,10 +75,33 @@ fn main() {
         Also possible to use:
             #[allow(unused_variables)]
     */
+
+    destructuring();
 }
 
 fn define_x() {
     let x: &str = "hello";
     println!("\ndefine_x() called...");
     println!("\tx: {}", x);
+}
+fn destructuring() {
+    /*
+        Destructuring
+        - we can use a pattern with let to destructure a tuple to separate variables.
+    */
+    println!("\ndestructuring() called...");
+    
+    let (mut x, _y) = (1, 2);
+    x = x + 2;
+    
+    println!("x: {}", x);
+
+    let (a, b);
+
+    (a, ..) = (3, 4);
+    [.., b] = [1, 2];
+
+    if a == 3 && b == 2 {
+        println!("\nSuccessful destructuring!");
+    }
 }
