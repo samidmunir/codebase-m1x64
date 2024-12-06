@@ -47,6 +47,17 @@ fn load_tasks(filename: &str) -> Vec<Task> {
     }
 }
 
+fn list_tasks(tasks: &Vec<Task>) {
+    for task in tasks {
+        println!(
+            "{}: [{}] {}",
+            task.id,
+            if task.done {"X"} else {" "},
+            task.description
+        );
+    }
+}
+
 fn main() {
     println!("\nRusty Todo App\n");
 }
