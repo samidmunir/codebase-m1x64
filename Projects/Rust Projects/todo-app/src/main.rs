@@ -67,6 +67,15 @@ fn mark_done(tasks: &mut Vec<Task>, id: usize) {
     }
 }
 
+fn remove_task(tasks: &mut Vec<Task>, id: usize) {
+    if let Some(pos) = tasks.iter().position(|t| t.id == id) {
+        tasks.remove(pos);
+        println!("Task {} removed.", id);
+    } else {
+        println!("Task with ID {} not found.", id);
+    }
+}
+
 fn main() {
     println!("\nRusty Todo App\n");
 }
