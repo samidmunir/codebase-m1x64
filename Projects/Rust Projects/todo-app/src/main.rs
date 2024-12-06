@@ -58,6 +58,15 @@ fn list_tasks(tasks: &Vec<Task>) {
     }
 }
 
+fn mark_done(tasks: &mut Vec<Task>, id: usize) {
+    if let Some(task) = tasks.iter_mut().find(|t| t.id == id) {
+        task.done = true;
+        println!("Task {} marked as done.", id);
+    } else {
+        println!("Task with ID {} not found.", id);
+    }
+}
+
 fn main() {
     println!("\nRusty Todo App\n");
 }
