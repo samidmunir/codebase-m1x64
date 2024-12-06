@@ -3,3 +3,4 @@ Sami Munir | sami.munir2001@gmail.com | https://github.com/samidmunir
 ## Tutorials
 ### Rust Programming
 * hello-world
+* variables
