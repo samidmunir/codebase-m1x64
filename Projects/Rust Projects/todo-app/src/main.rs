@@ -1,4 +1,4 @@
-use clap::{Parser, Subcommand};
+use clap::Parser;
 use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -8,15 +8,15 @@ struct Task {
     done: bool,
 }
 
-#[derive(Parser)]
-#[command(name = "Todo App")]
-#[command(about = "A simple command-line to-do list app", long_about = None)]
+#[derive(clap::Parser)]
+#[clap(name = "Todo App")]
+#[clap(about = "A simple command-line to-do list app", long_about = None)]
 struct Cli {
     #[command(subcommand)]
     command: Commands,
 }
 
-#[derive(Subcommand)]
+#[derive(clap::Subcommand)]
 enum Commands {
     Add {description: String},
     List,
@@ -78,4 +78,31 @@ fn remove_task(tasks: &mut Vec<Task>, id: usize) {
 
 fn main() {
     println!("\nRusty Todo App\n");
+
+    let filename = "tasks.json";
+    let mut tasks = load_tasks(filename);
+
+    let cli = Cli::parse();
+
+    match cli.command {
+        Commands::Add {description} => {
+            add_task(&mut tasks, description);
+        }
+
+        Commands::List => {
+            list_tasks(&tasks);
+        }
+
+        Commands::Done {id} => {
+            mark_done(&mut tasks, id);
+        }
+
+        Commands::Remove {id} => {
+            remove_task(&mut tasks, id);
+        }
+    }
+
+    if let Err(e) = save_tasks(&tasks, filename) {
+        eprintln!("Error saving tasks: {}", e);
+    }
 }
