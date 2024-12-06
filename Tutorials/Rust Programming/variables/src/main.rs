@@ -63,7 +63,9 @@ fn main() {
     */
     let mut x: u8 = 1;
     x = 7;
+    println!("\nx (old): {}", x);
     let _x = x;
+    println!("x (new): {}", x);
     // x = x + 3; // cannot do this because by default x is immutable.
 
     let _y: u8 = 7;
