@@ -1,0 +1,1 @@
+/Users/samimunir/Desktop/samimunir/Codebase/Projects/Full-stack\ Projects/rusty-weather-app/backend/target/debug/backend: /Users/samimunir/Desktop/samimunir/Codebase/Projects/Full-stack\ Projects/rusty-weather-app/backend/src/main.rs

@@ -8,5 +8,20 @@
     "id": 2,
     "description": "Complete MSFS setup",
     "done": false
+  },
+  {
+    "id": 3,
+    "description": "Work on CS105 ML-project",
+    "done": false
+  },
+  {
+    "id": 4,
+    "description": "Complete CS352 Project_3",
+    "done": false
+  },
+  {
+    "id": 5,
+    "description": "Clean room",
+    "done": false
   }
 ]
