@@ -1,3 +1,4 @@
+use actix_cors::Cors;
 use actix_web::{get, web, App, HttpServer, Responder};
 use reqwest::Client;
 use serde::Deserialize;
@@ -49,9 +50,15 @@ async fn main() -> std::io::Result<()> {
     let client = Client::new();
 
     HttpServer::new(move || {
+        let cors = Cors::default()
+            .allow_any_origin()
+            .allow_any_method()
+            .allow_any_header();
+
         App::new()
-           .app_data(web::Data::new(client.clone()))
-           .service(get_weather)
+            .wrap(cors)
+            .app_data(web::Data::new(client.clone()))
+            .service(get_weather)
     })
     .bind("localhost:8080")?
     .run()
