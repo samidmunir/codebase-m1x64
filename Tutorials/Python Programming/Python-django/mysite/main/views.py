@@ -11,3 +11,6 @@ from django.http import HttpResponse
 
 def index(response):
     return HttpResponse('<h1>Hello world! - index</h1>')
+
+def view1(response):
+    return HttpResponse('<h1>View #1</h1>')
