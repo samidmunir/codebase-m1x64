@@ -11,4 +11,4 @@ Sami Munir | sami.munir2001@gmail.com | https://github.com/samidmunir
 * hello-world
 * variables
 ### Python Programming
-* django
+* Python-django
