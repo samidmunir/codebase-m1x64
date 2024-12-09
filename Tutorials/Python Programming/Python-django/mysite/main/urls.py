@@ -12,6 +12,5 @@ from . import views
     root direction -> views.index page (name is index)
 """
 urlpatterns = [
-    path('', views.index, name = 'index'),
-    path('view1/', views.view1, name = 'view1'),
+    path('<str:name>', views.index, name = 'index'),
 ]
