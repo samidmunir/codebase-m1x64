@@ -10,3 +10,5 @@ Sami Munir | sami.munir2001@gmail.com | https://github.com/samidmunir
 ### Rust Programming
 * hello-world
 * variables
+### Python Programming
+* django
