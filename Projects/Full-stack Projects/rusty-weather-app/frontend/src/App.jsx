@@ -11,7 +11,7 @@ const App = () => {
     try {
       const data = await fetchWeather(location);
       setWeather(data);
-      console.log(data);
+      // console.log(data);
     } catch {
       setError('Failed to fetch weather data. Please try again.');
     }
@@ -33,7 +33,8 @@ const App = () => {
         weather && (
           <div>
             <h2>Weather in {location}</h2>
-            <p>Temperature: {weather.split('is')[1].split('°')[0]}°C</p>
+            <p>{weather}</p>
+            {/* <p>Temperature: {weather.split('is')[1].split('°')[0]}°C</p> */}
           </div>
         )
       }
