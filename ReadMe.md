@@ -6,6 +6,7 @@ Sami Munir | sami.munir2001@gmail.com | https://github.com/samidmunir
 ### Full-stack Projects
 * rusty-weather-app
 * weather-app
+* pakistan-house-price-predictor
 ### Machine Learning Projects
 * pakistan-house-price-predictor
 ## Tutorials

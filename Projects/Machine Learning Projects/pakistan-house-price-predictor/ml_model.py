@@ -188,6 +188,8 @@ def random_forest_regression(x_train: PD.Series, X_test: PD.Series, y_train: PD.
     print(f"Random Forest - Mean Absolute Error (MAE): {mae_rf:.4f}")
     print(f"Random Forest - Mean Squared Error (MSE): {mse_rf:.4f}")
     print(f"Random Forest - R² Score: {r2_rf:.4f}")
+    
+    joblib.dump(RF_MODEL, 'random_forest_model.pkl')
 
 """
     function display_data_histogram(data: PD.DataFrame) -> None:
@@ -236,11 +238,13 @@ def main() -> None:
     y = SCALED_DATA['price']
     x_train, X_test, y_train, Y_test = train_test_split(x, y, test_size = 0.2, random_state = 42)
     
-    linear_regression(x_train = x_train, X_test = X_test, y_train = y_train, Y_test = Y_test)
+    # linear_regression(x_train = x_train, X_test = X_test, y_train = y_train, Y_test = Y_test)
     
-    multiple_linear_regression(x_train = x_train, X_test = X_test, y_train = y_train, Y_test = Y_test)
+    # multiple_linear_regression(x_train = x_train, X_test = X_test, y_train = y_train, Y_test = Y_test)
     
     random_forest_regression(x_train = x_train, X_test = X_test, y_train = y_train, Y_test = Y_test, n_estimators = 100, random_state = 42)
+    
+    # print('\n\n', x_train.columns)
     
 if __name__ == '__main__':
     main()
