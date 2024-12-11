@@ -1,10 +1,12 @@
+import joblib
 import matplotlib.pyplot as PLT
 import numpy as NP
 import pandas as PD
 import seaborn as SNS
 
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
@@ -125,7 +127,11 @@ def linear_regression(x_train: PD.Series, X_test: PD.Series, y_train: PD.Series,
     test_r2 = r2_score(Y_test, test_predictions)
     print(f"\tTest Mean Squared Error: {test_mse:.4f}")
     print(f"\tTest R^2 Score: {test_r2:.4f}")
-    
+
+"""
+    function multiple_linear_regression(x_train: PD.Series, X_test: PD.Series, y_train: PD.Series, Y_test: PD.Series) -> None:
+    - this function performs multiple linear regression using the training data and evaluates the model on both the training and test data.
+"""
 def multiple_linear_regression(x_train: PD.Series, X_test: PD.Series, y_train: PD.Series, Y_test: PD.Series) -> None:
     print('\nmultiple_linear_regression() called -->')
     print('\tTraining Multiple Linear Regression model...')
@@ -152,6 +158,36 @@ def multiple_linear_regression(x_train: PD.Series, X_test: PD.Series, y_train: P
     for feature, coeficient in zip(x_train.columns, model.coef_):
         print(f'\t - {feature}: {coeficient:.4f}')
     print(f'\tModel Intercept: {model.intercept_:.4f}')
+
+"""
+    function random_forest_regression(x_train: PD.Series, X_test: PD.Series, y_train: PD.Series, Y_test: PD.Series, n_estimators = 100, random_state = 42) -> None:
+    - this function performs random forest regression using the training data and evaluates the model on both the training and test data.
+"""
+def random_forest_regression(x_train: PD.Series, X_test: PD.Series, y_train: PD.Series, Y_test: PD.Series, n_estimators = 100, random_state = 42) -> None:
+    print('\nrandom_forest_regression() called -->')
+    print('\tTraining Random Forest Regression model...')
+    
+    RF_MODEL = RandomForestRegressor(n_estimators = n_estimators, random_state = random_state)
+    
+    RF_MODEL.fit(X = x_train, y = y_train)
+    print('\tRandom Forest Regression model trained.')
+    
+    Y_PRED_RF = RF_MODEL.predict(X = x_train)
+    mae_rf = mean_absolute_error(y_train, Y_PRED_RF)
+    mse_rf = mean_squared_error(y_train, Y_PRED_RF)
+    r2_rf = r2_score(y_train, Y_PRED_RF)
+    print(f"\nRandom Forest - Mean Absolute Error (MAE): {mae_rf:.4f}")
+    print(f"Random Forest - Mean Squared Error (MSE): {mse_rf:.4f}")
+    print(f"Random Forest - R² Score: {r2_rf:.4f}")
+    
+    print("\n\tEvaluating model on test data...")
+    Y_TEST_RF = RF_MODEL.predict(X = X_test)
+    mae_rf = mean_absolute_error(Y_test, Y_TEST_RF)
+    mse_rf = mean_squared_error(Y_test, Y_TEST_RF)
+    r2_rf = r2_score(Y_test, Y_TEST_RF)
+    print(f"Random Forest - Mean Absolute Error (MAE): {mae_rf:.4f}")
+    print(f"Random Forest - Mean Squared Error (MSE): {mse_rf:.4f}")
+    print(f"Random Forest - R² Score: {r2_rf:.4f}")
 
 """
     function display_data_histogram(data: PD.DataFrame) -> None:
@@ -203,6 +239,8 @@ def main() -> None:
     linear_regression(x_train = x_train, X_test = X_test, y_train = y_train, Y_test = Y_test)
     
     multiple_linear_regression(x_train = x_train, X_test = X_test, y_train = y_train, Y_test = Y_test)
+    
+    random_forest_regression(x_train = x_train, X_test = X_test, y_train = y_train, Y_test = Y_test, n_estimators = 100, random_state = 42)
     
 if __name__ == '__main__':
     main()
