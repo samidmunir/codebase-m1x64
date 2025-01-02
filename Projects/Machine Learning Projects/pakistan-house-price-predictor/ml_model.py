@@ -215,6 +215,34 @@ def display_correlation_heatmap(data: PD.DataFrame):
     PLT.figure(figsize = (15, 8))
     SNS.heatmap(data.corr(), annot = True, cmap = 'YlGnBu')
     PLT.show()
+    
+def compute_highest_luxury_index_by_city(data: PD.DataFrame) -> PD.DataFrame:
+    print('\ncompute_highest_luxury_index_by_city() called -->')
+    
+    max_luxury_index_by_city = data.groupby('city')['luxury_index'].max().reset_index()
+    # max_luxury_index_by_city.columns = ['city', 'Max Luxury Index']
+    
+    print(max_luxury_index_by_city)
+    
+    return max_luxury_index_by_city
+
+def expensive_and_cheap_houses(data: PD.DataFrame) -> PD.DataFrame:
+    print('\nexpensive_and_cheap_houses() called -->')
+    
+    most_expensive = data.loc[data.groupby('city')['price'].idxmax()]
+    least_expensive = data.loc[data.groupby('city')['price'].idxmin()]
+    
+    most_expensive['Type'] = 'Most Expensive'
+    least_expensive['Type'] = 'Least Expensive'
+    
+    combined = PD.concat([most_expensive, least_expensive])
+    # combined = PD.concat([most_expensive])
+    
+    combined = combined.sort_values(by = 'city')
+    
+    print(combined[['city', 'price', 'size', 'bedrooms', 'baths', 'Type']])
+    
+    return combined
 
 def main() -> None:
     DATA_FILENAME = 'data.csv'
@@ -245,6 +273,9 @@ def main() -> None:
     random_forest_regression(x_train = x_train, X_test = X_test, y_train = y_train, Y_test = Y_test, n_estimators = 100, random_state = 42)
     
     # print('\n\n', x_train.columns)
+    
+    compute_highest_luxury_index_by_city(data = FEATURE_ENGINEERED_DATA)
+    expensive_and_cheap_houses(data = FEATURE_ENGINEERED_DATA)
     
 if __name__ == '__main__':
     main()
