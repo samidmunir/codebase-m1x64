@@ -5,8 +5,8 @@ const Navbar = () => (
         <div className='container mx-auto flex justify-between'>
             <Link to='/' className='text-xl font-bold'>Job App Tracker</Link>
             <div>
-                <link to='/' className='mr-4'>Home</link>
-                <link to='/add-job' className='mr-4'>Add Job</link>
+                <Link to='/' className='mr-4'>Home</Link>
+                <Link to='/add-job' className='mr-4'>Add Job</Link>
             </div>
         </div>
     </nav>
