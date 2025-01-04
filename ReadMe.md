@@ -15,3 +15,4 @@ Sami Munir | sami.munir2001@gmail.com | https://github.com/samidmunir
 * variables
 ### Python Programming
 * Python-django
+* Python-FastAPI
