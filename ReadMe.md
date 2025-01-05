@@ -7,14 +7,5 @@ Sami Munir | sami.munir2001@gmail.com | https://github.com/samidmunir
 * rusty-weather-app
 * weather-app
 * pakistan-house-price-predictor
-* job-application-tracker
-* django-notes-app
 ### Machine Learning Projects
 * pakistan-house-price-predictor
-## Tutorials
-### Rust Programming
-* hello-world
-* variables
-### Python Programming
-* Python-django
-* Python-FastAPI

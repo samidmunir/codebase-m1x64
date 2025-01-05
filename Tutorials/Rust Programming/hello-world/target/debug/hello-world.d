@@ -1,1 +1,0 @@
-/Users/samimunir/Desktop/samimunir/Codebase/Tutorials/Rust\ Programming/hello-world/target/debug/hello-world: /Users/samimunir/Desktop/samimunir/Codebase/Tutorials/Rust\ Programming/hello-world/src/main.rs
