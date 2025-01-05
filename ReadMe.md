@@ -8,6 +8,7 @@ Sami Munir | sami.munir2001@gmail.com | https://github.com/samidmunir
 * weather-app
 * pakistan-house-price-predictor
 * job-application-tracker
+* django-notes-app
 ### Machine Learning Projects
 * pakistan-house-price-predictor
 ## Tutorials
